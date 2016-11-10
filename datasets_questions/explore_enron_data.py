@@ -45,3 +45,6 @@ from pandas import DataFrame
 df = DataFrame(enron_data)
 sfl_total_payments_series = df[['SKILLING JEFFREY K', 'FASTOW ANDREW S', 'LAY KENNETH L']].ix['total_payments']
 print sfl_total_payments_series.idxmax() + " took the most money home: " + str(sfl_total_payments_series.max())
+
+print "Known salaries: " + str(df.T.loc[df.T['salary'] != 'NaN']['salary'].count())
+print "Known email addresses: " + str(df.T.loc[df.T['email_address'] != 'NaN']['email_address'].count())
