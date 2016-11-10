@@ -21,3 +21,13 @@ enron_data = pickle.load(open("../final_project/final_project_dataset.pkl", "r")
 
 print "Size of dataset: " + str(len(enron_data))
 print "Number of features: " + str(len(enron_data.itervalues().next()))
+
+poi_count = {}
+for person in enron_data:
+    if enron_data[person]['poi']:
+        if poi_count.get(person) == 1:
+            poi_count[person] = poi_count[person] + 1
+        else:
+            poi_count[person] = 1
+
+print "Number of pois: " + str(len(poi_count))
