@@ -25,11 +25,17 @@ print "Number of features: " + str(len(enron_data.itervalues().next()))
 poi_count = {}
 for person in enron_data:
     if enron_data[person]['poi']:
-        if poi_count.get(person) == 1:
-            poi_count[person] = poi_count[person] + 1
+        if person in poi_count:
+            poi_count[person] += 1
         else:
             poi_count[person] = 1
 
 print "Number of pois: " + str(len(poi_count))
 
 print "Total value of the stock belonging to James Prentice: " + str(enron_data['PRENTICE JAMES']['total_stock_value'])
+
+colwell = enron_data['COLWELL WESLEY'] 
+print "Email messages from Wesley Colwell to POIs: " + str(colwell['from_this_person_to_poi'])
+
+skilling = enron_data['SKILLING JEFFREY K']
+print "Stock options exercised by Jeffrey K Skilling: " + str(skilling['exercised_stock_options'])
