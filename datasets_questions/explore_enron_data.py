@@ -39,3 +39,9 @@ print "Email messages from Wesley Colwell to POIs: " + str(colwell['from_this_pe
 
 skilling = enron_data['SKILLING JEFFREY K']
 print "Stock options exercised by Jeffrey K Skilling: " + str(skilling['exercised_stock_options'])
+
+from pandas import DataFrame
+
+df = DataFrame(enron_data)
+sfl_total_payments_series = df[['SKILLING JEFFREY K', 'FASTOW ANDREW S', 'LAY KENNETH L']].ix['total_payments']
+print sfl_total_payments_series.idxmax() + " took the most money home: " + str(sfl_total_payments_series.max())
