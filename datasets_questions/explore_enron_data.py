@@ -31,3 +31,5 @@ for person in enron_data:
             poi_count[person] = 1
 
 print "Number of pois: " + str(len(poi_count))
+
+print "Total value of the stock belonging to James Prentice: " + str(enron_data['PRENTICE JAMES']['total_stock_value'])
