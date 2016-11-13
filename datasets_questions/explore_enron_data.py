@@ -49,4 +49,7 @@ print sfl_total_payments_series.idxmax() + " took the most money home: " + str(s
 print "Known salaries: " + str(df.T.loc[df.T['salary'] != 'NaN']['salary'].count())
 print "Known email addresses: " + str(df.T.loc[df.T['email_address'] != 'NaN']['email_address'].count())
 
-print ("Percentage of people with NaN as total payment: %.2f%%" % (df.T.loc[df.T['total_payments'] == 'NaN']['total_payments'].count() * 100 / float(df.T['total_payments'].count())))
+print ("Percentage of people with NaN as total payment: %.2f%%" % \
+    (df.T.loc[df.T['total_payments'] == 'NaN']['total_payments'].count() * 100 / float(df.T['total_payments'].count())))
+
+
