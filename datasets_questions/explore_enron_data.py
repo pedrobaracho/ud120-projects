@@ -43,13 +43,23 @@ print "Stock options exercised by Jeffrey K Skilling: " + str(skilling['exercise
 from pandas import DataFrame
 
 df = DataFrame(enron_data)
+dfT = df.T
+
 sfl_total_payments_series = df[['SKILLING JEFFREY K', 'FASTOW ANDREW S', 'LAY KENNETH L']].ix['total_payments']
 print sfl_total_payments_series.idxmax() + " took the most money home: " + str(sfl_total_payments_series.max())
 
-print "Known salaries: " + str(df.T.loc[df.T['salary'] != 'NaN']['salary'].count())
-print "Known email addresses: " + str(df.T.loc[df.T['email_address'] != 'NaN']['email_address'].count())
+print "Known salaries: " + str(dfT.loc[dfT['salary'] != 'NaN']['salary'].count())
+print "Known email addresses: " + str(dfT.loc[dfT['email_address'] != 'NaN']['email_address'].count())
 
 print ("Percentage of people with NaN as total payment: %.2f%%" % \
-    (df.T.loc[df.T['total_payments'] == 'NaN']['total_payments'].count() * 100 / float(df.T['total_payments'].count())))
+    (dfT.loc[dfT['total_payments'] == 'NaN']['total_payments'].count() * 100 / float(dfT['total_payments'].count())))
 
+print ("Percentage of POIs with NaN as total payment: %.2f%%" % \
+    (dfT[dfT["poi"]].loc[dfT['total_payments'] == 'NaN']['total_payments'].count() * 100 / float(dfT[dfT["poi"]]['total_payments'].count())))
+
+print "After adding 10 NaN for total payments:"
+print "   Number of people in the dataset: " + str(dfT['total_payments'].count() + 10)
+print "   Number of people with NaN as total payment: " + str(dfT.loc[dfT['total_payments'] == 'NaN']['total_payments'].count() + 10)
+# print ("Percentage of people with NaN as total payment after 10 added: %.2f%%" % \
+#    ((dfT.loc[dfT['total_payments'] == 'NaN']['total_payments'].count() + 10) * 100 / float(dfT['total_payments'].count())))
 
