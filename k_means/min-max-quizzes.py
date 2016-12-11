@@ -1,6 +1,3 @@
-
-
-
 import pickle
 from pandas import DataFrame
 
@@ -18,3 +15,11 @@ print "Minimum \"exercised_stock_options\": ", stock_options.min()
 # Now we have to clear 'NaN'
 stock_options = stock_options.where(stock_options != 'NaN', 0)
 print "Maximum \"exercised_stock_options\": ", stock_options.max()
+
+salaries = df.T["salary"]
+
+print "Minimum \"salary\": ", salaries.min()
+
+# Now we have to clear 'NaN'
+salaries = salaries.where(salaries != 'NaN', 0)
+print "Maximum \"salary\": ", salaries.max()
